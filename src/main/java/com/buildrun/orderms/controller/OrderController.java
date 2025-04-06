@@ -5,8 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.buildrun.orderms.controller.dto.ApiResponse;
+import com.buildrun.orderms.controller.dto.OrderResponse;
 import com.buildrun.orderms.service.OrderService;
-import com.rabbitmq.client.impl.AMQImpl.Basic.Get;
 
 @RestController
 public class OrderController {
@@ -17,8 +18,10 @@ public class OrderController {
     }
 
     @GetMapping("/customers/{customerId}/orders")
-    public ResponseEntity<?> listOrders(@RequestParam(name = "page", defaultValue = "0") int page,
+    public ResponseEntity<ApiResponse<OrderResponse>> listOrders(@RequestParam(name = "page", defaultValue = "0") int page,
                                         @RequestParam(name = "pageSize", defaultValue = "10") int pageSize) {
-                                            return null;
+        
+        return ResponseEntity.ok(null);
     }
 }
+ 

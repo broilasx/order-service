@@ -1,5 +1,7 @@
 package com.buildrun.orderms.controller.dto;
 
-public class ApiResponse {
+import java.util.List;
+
+public record ApiResponse<T>(List<T> data, PaginationResponse pagination) {
     
 }

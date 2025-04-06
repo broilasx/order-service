@@ -1,5 +1,7 @@
 package com.buildrun.orderms.controller;
 
+import java.util.Map;
+
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +28,8 @@ public class OrderController {
                                                                 @RequestParam(name = "pageSize", defaultValue = "10") int pageSize) {
         
         var pageResponse = orderService.findAllByCustomerId(customerId, PageRequest.of(page, pageSize));
-        return ResponseEntity.ok(new ApiResponse<>(pageResponse.getContent(), PaginationResponse.fromPage(pageResponse)));
+        var totalOnOrders = orderService.findTotalOnOrdersByCustomerId(customerId);
+        return ResponseEntity.ok(new ApiResponse<>(Map.of("totalOnOrders", totalOnOrders), pageResponse.getContent(), PaginationResponse.fromPage(pageResponse)));
     }
 }
  

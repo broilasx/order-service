@@ -4,6 +4,6 @@ import java.util.List;
 
 public record OrderCreatedEvent(Long codigoPedido,
                                 Long codigoClient,
-                                List<OrderItemEvent> item) {
+                                List<OrderItemEvent> itens) {
     
 }
